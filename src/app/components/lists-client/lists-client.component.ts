@@ -21,6 +21,16 @@ export class ListsClientComponent implements OnInit {
     this.clientService._getClients()
     .subscribe((client: Client[]) => this.clients=client);
   }
-
-
+  deleteClient(id){
+    this.clientService._deleteClient(id)
+                      .then((res)=>console.log(res))
+                      .catch((err)=>console.log(err));
+  }
+  toggleStatus(client){
+    
+    this.clientService._toggleStatus({active : !client.active},client.id)
+                .then((resp)=>console.log(resp))
+                .catch((err)=>console.error(err));
+  }
+  
 }
