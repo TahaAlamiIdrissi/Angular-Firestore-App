@@ -1,33 +1,52 @@
 <div class="row">
-  <div class="col-md-6">
-    <h1>List Clients</h1>
+    <div class="col-md-6">
+      <h1>List of clients</h1>
+    </div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/add" class="btn btn-success"><i class="fa fa-plus"></i></a>
+    </div>
   </div>
-  <div class="col-md-6">
-    <a href="" class="btn-danger"></a>
+ 
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Fullname</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Balance</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let client of clients" [ngClass]="{'table-success': client.active,
+                                                          'table-light' : !client.active}">
+            <td>
+              <button [ngClass]="{'btn-success': client.active,
+                                  'btn-danger' : !client.active}"
+                      (click)="toggleStatus(client)"  
+                      class="btn btn-sm btn-danger">
+                <i class="fa fa-power-off"></i>
+              </button>
+            </td>
+            <td>{{ client.firstName }} {{ client.lastName }}</td>
+            <td>{{ client.telephone }}</td>
+            <td>{{ client.email }}</td>
+            <td>{{ client.balance }}</td>
+            <td class="text-right">
+              <button (click)="deleteClient(client.id)" class="btn btn-sm btn-warning">
+                <i class="fa fa-trash"></i>
+              </button>
+              <br>
+              <a [routerLink]="['/edit',client.id]" (click)="editClient(client.id)" 
+              class="btn btn-sm btn-info" style="margin-top: 3px">
+                  <i class="fa fa-pencil"></i>
+              </a>
+          </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
-    <table class="table-striped">
-      <thead>
-        <tr>
-          <th>Full name</th>
-          <th>Phone</th>
-          <th>Email</th>
-          <th>Balance</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let client of clients">
-          <td>{{client.firstName}} - {{client.lastName}}</td>
-          <td>{{client.phone}}</td>
-          <td>{{client.email}}</td>
-          <td>{{client.balance}}</td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
