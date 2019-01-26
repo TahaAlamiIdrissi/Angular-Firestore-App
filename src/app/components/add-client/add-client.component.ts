@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from 'src/app/services/client.service';
 import { Router } from '@angular/router';
+// import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-client',
@@ -22,7 +23,26 @@ export class AddClientComponent implements OnInit {
                         .then(()=>this.router.navigate(['/']))
                         .catch((error)=>console.error(error));
     }else{
-      alert('form invalid');
+      // Swal({
+      //   title: 'Form invalid',
+      //   text: 'please re-enter your information',
+      //   type: 'warning',
+      //   showCancelButton: true,
+      //   confirmButtonText: 'Continue',
+      //   cancelButtonText: 'Cancel'
+      // }).then((result) => {
+      //   if (result.value) {
+      //     Swal(
+      //       'Done ! ',
+      //     );
+      //   } else if (result.dismiss === Swal.DismissReason.cancel) {
+      //     Swal(
+      //       'Cancelled',
+            
+      //     );
+      //   }
+      // });
+      alert("Form invalid !")
     }
   }
 }
