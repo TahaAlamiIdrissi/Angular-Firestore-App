@@ -11,6 +11,7 @@ export class ListsClientComponent implements OnInit {
   constructor(private clientService : ClientService) { }
 
   ngOnInit() {
+    this.getClients();
   }
 
   getClients(){
