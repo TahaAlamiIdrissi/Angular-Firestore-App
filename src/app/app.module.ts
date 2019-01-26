@@ -12,6 +12,11 @@ import { ShowClientComponent } from './components/show-client/show-client.compon
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ListsClientComponent } from './components/lists-client/lists-client.component';
 
+//import angular fire
+import {AngularFireModule} from '@angular/fire';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +31,9 @@ import { ListsClientComponent } from './components/lists-client/lists-client.com
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
