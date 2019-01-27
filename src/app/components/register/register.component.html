@@ -1,3 +1,28 @@
-<p>
-  register works!
-</p>
+<div class="container" style="margin-top:50px">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                  &nbsp;<label>Register</label>
+                </h4>
+                <div class="card-text">
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control"[(ngModel)]="email" placeholder="email">
+                  </div>
+                  <div class="form-group">
+                      <label for="password">Password</label>
+                      <input type="password" class="form-control"[(ngModel)]="password" placeholder="password">
+                    </div>
+                </div>
+                <button class="btn btn-success btn-block" (click)="register()">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                   &nbsp; <label>Register</label>
+                  </button>
+              </div>
+          </div>
+        </div>
+      </div>
+</div>
