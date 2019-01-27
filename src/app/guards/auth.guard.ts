@@ -24,7 +24,7 @@ export class AuthGuard implements CanActivate {
                               return true;
                             } else {
                               this.router.navigate(['/']);
-                              console.log('else', user);
+                              alert('You do not have the rights ');
                               return false;
                             }
                           }
