@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from 'src/app/services/client.service';
 import { Client } from 'src/app/client';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-lists-client',
@@ -10,6 +11,8 @@ import { Client } from 'src/app/client';
 export class ListsClientComponent implements OnInit {
 
   clients : Client[] = [];
+  search = "";
+  searchClients : Client[] = []; 
 
   constructor(private clientService : ClientService) { }
 
@@ -19,7 +22,7 @@ export class ListsClientComponent implements OnInit {
 
   getClients(){
     this.clientService._getClients()
-    .subscribe((client: Client[]) => this.clients=client);
+    .subscribe((client: Client[]) => this.searchClients=this.clients=client);
   }
   deleteClient(id){
     this.clientService._deleteClient(id)
@@ -32,5 +35,9 @@ export class ListsClientComponent implements OnInit {
                 .then((resp)=>console.log(resp))
                 .catch((err)=>console.error(err));
   }
+  searchClient() {
+    this.searchClients =
+     _.filter(this.clients, (client) => _.includes(client.email, this.search) || _.includes(client.firstName, this.search) || _.includes(client.lastName, this.search))
+   }
   
 }
