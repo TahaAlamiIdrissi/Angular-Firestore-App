@@ -16,9 +16,12 @@ import { ListsClientComponent } from './components/lists-client/lists-client.com
 //import angular fire
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireAuthModule} from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 //importation du module du formulaire
 import {FormsModule} from '@angular/forms';
+//flash messages
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 @NgModule({
   declarations: [
@@ -30,14 +33,16 @@ import {FormsModule} from '@angular/forms';
     EditClientComponent,
     ShowClientComponent,
     PageNotFoundComponent,
-    ListsClientComponent
+    ListsClientComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    FormsModule
+    FormsModule,
+    AngularFireAuthModule,
+    FlashMessagesModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
